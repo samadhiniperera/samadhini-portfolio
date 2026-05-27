@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Samadhini Perera | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --peach: #F4A98A;
+      --peach-light: #FAD9C8;
+      --peach-pale: #FDF0E8;
+      --ivory: #FFFBF5;
+      --ivory-dark: #F5EDE0;
+      --rose: #D97B61;
+      --rose-dark: #B85C42;
+      --text-dark: #3A2A22;
+      --text-mid: #7A5C50;
+      --text-light: #B09080;
+      --white: #FFFFFF;
+      --shadow: 0 8px 40px rgba(180,100,70,0.10);
+      --shadow-sm: 0 2px 12px rgba(180,100,70,0.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--ivory);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ─── DECORATIVE BG ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, #FAD9C8 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -200px; left: -200px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, #F4A98A22 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(255,251,245,0.85);
+      border-bottom: 1px solid var(--peach-light);
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--rose-dark);
+      letter-spacing: 0.02em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-mid);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--rose); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: var(--rose); border-radius: 2px; transition: all 0.3s; }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 100px 5% 60px;
+      position: relative;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--peach-light);
+      color: var(--rose-dark);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 1.2rem;
+    }
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--text-dark);
+      margin-bottom: 0.4rem;
+    }
+    .hero-name em { font-style: italic; color: var(--rose); }
+    .hero-title {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .hero-desc {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.8;
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--rose);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: all 0.25s;
+      border: 2px solid var(--rose);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--rose-dark); border-color: var(--rose-dark); transform: translateY(-2px); }
+    .btn-outline {
+      border: 2px solid var(--peach);
+      color: var(--rose);
+      padding: 12px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: all 0.25s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-outline:hover { background: var(--peach-pale); transform: translateY(-2px); }
+
+    .hero-photo-wrap {
+      position: relative;
+      display: flex; justify-content: center;
+    }
+    .hero-photo-bg {
+      width: 360px; height: 420px;
+      border-radius: 60% 40% 55% 45% / 50% 55% 45% 50%;
+      background: linear-gradient(135deg, var(--peach-light) 0%, var(--peach) 100%);
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(180,100,70,0.2);
+    }
+    .hero-photo-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: inherit;
+    }
+    .hero-photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: var(--rose-dark);
+      gap: 0.5rem;
+    }
+    .hero-photo-placeholder i { font-size: 4rem; opacity: 0.5; }
+    .hero-photo-placeholder p { font-size: 0.8rem; opacity: 0.6; text-align: center; padding: 0 1rem; }
+    .hero-badge {
+      position: absolute;
+      bottom: -16px; left: -20px;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 14px 18px;
+      box-shadow: var(--shadow);
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.8rem;
+    }
+    .hero-badge .dot { width: 10px; height: 10px; background: #5DBB8A; border-radius: 50%; flex-shrink: 0; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.4} }
+    .hero-badge strong { color: var(--text-dark); }
+    .hero-badge span { color: var(--text-light); }
+
+    .hero-socials {
+      display: flex; gap: 0.75rem; margin-top: 2rem;
+    }
+    .social-icon {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid var(--peach-light);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-mid);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .social-icon:hover { background: var(--peach-light); color: var(--rose); border-color: var(--peach); }
+
+    /* ─── SECTION BASE ─── */
+    section { position: relative; z-index: 1; padding: 100px 5%; }
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--peach);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+    .section-title em { font-style: italic; color: var(--rose); }
+    .section-sub {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      max-width: 500px;
+      line-height: 1.7;
+      margin-bottom: 3.5rem;
+    }
+    .section-header { text-align: center; }
+    .section-header .section-sub { margin: 0 auto 3.5rem; }
+
+    /* ─── ABOUT ─── */
+    #about { background: var(--ivory-dark); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .about-text p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.9; margin-bottom: 1rem; }
+    .about-info { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+    .info-item { background: var(--ivory); padding: 16px 20px; border-radius: 12px; border: 1px solid var(--peach-light); }
+    .info-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); margin-bottom: 4px; }
+    .info-value { font-size: 0.875rem; color: var(--text-dark); font-weight: 500; }
+    .about-stats { display: flex; flex-direction: column; gap: 1.5rem; }
+    .stat-card {
+      background: var(--ivory);
+      border-radius: 20px;
+      padding: 28px;
+      border: 1px solid var(--peach-light);
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--rose);
+      line-height: 1;
+    }
+    .stat-desc { font-size: 0.875rem; color: var(--text-mid); margin-top: 6px; }
+
+    /* ─── SKILLS ─── */
+    #skills { background: var(--ivory); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .skill-card {
+      background: var(--ivory-dark);
+      border-radius: 20px;
+      padding: 28px;
+      border: 1px solid var(--peach-light);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .skill-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .skill-card-icon {
+      width: 48px; height: 48px;
+      background: var(--peach-light);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--rose);
+    }
+    .skill-card h3 { font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dark); margin-bottom: 1rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag {
+      background: var(--ivory);
+      border: 1px solid var(--peach-light);
+      color: var(--text-mid);
+      font-size: 0.78rem;
+      padding: 5px 12px;
+      border-radius: 50px;
+      font-weight: 500;
+    }
+
+    /* ─── PROJECTS ─── */
+    #projects { background: var(--ivory-dark); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .project-card {
+      background: var(--ivory);
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--peach-light);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .project-card.featured { grid-column: span 2; }
+    .project-top {
+      background: linear-gradient(135deg, var(--peach-light) 0%, var(--peach) 100%);
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      min-height: 160px;
+      display: flex; align-items: flex-end;
+    }
+    .project-top::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 180px; height: 180px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+    }
+    .project-emoji { font-size: 3rem; position: relative; z-index: 1; }
+    .project-body { padding: 28px; }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .stack-tag {
+      background: var(--peach-pale);
+      color: var(--rose-dark);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 50px;
+    }
+    .project-body h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--text-dark); margin-bottom: 10px; }
+    .project-body p { font-size: 0.875rem; color: var(--text-light); line-height: 1.7; margin-bottom: 18px; }
+    .project-links { display: flex; gap: 12px; }
+    .proj-link {
+      font-size: 0.8rem; font-weight: 600;
+      color: var(--rose);
+      text-decoration: none;
+      display: flex; align-items: center; gap: 5px;
+      transition: color 0.2s;
+    }
+    .proj-link:hover { color: var(--rose-dark); }
+    .project-features { margin: 12px 0; padding: 0; list-style: none; }
+    .project-features li { font-size: 0.8rem; color: var(--text-mid); padding: 3px 0; display: flex; align-items: flex-start; gap: 6px; }
+    .project-features li::before { content: '✦'; color: var(--peach); font-size: 0.6rem; margin-top: 3px; flex-shrink: 0; }
+
+    /* ─── EXPERIENCE ─── */
+    #experience { background: var(--ivory); }
+    .timeline { max-width: 800px; margin: 0 auto; position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--peach), var(--peach-light), transparent);
+    }
+    .timeline-item { padding-left: 60px; position: relative; margin-bottom: 3rem; }
+    .timeline-dot {
+      position: absolute;
+      left: 10px; top: 6px;
+      width: 20px; height: 20px;
+      background: var(--rose);
+      border-radius: 50%;
+      border: 3px solid var(--ivory);
+      box-shadow: 0 0 0 3px var(--peach-light);
+    }
+    .timeline-card {
+      background: var(--ivory-dark);
+      border-radius: 20px;
+      padding: 28px;
+      border: 1px solid var(--peach-light);
+      box-shadow: var(--shadow-sm);
+    }
+    .timeline-period {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--peach);
+      margin-bottom: 6px;
+    }
+    .timeline-card h3 { font-size: 1.05rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
+    .timeline-card h4 { font-size: 0.875rem; color: var(--text-mid); font-weight: 400; margin-bottom: 14px; }
+    .timeline-card p, .timeline-card li { font-size: 0.875rem; color: var(--text-light); line-height: 1.7; }
+    .timeline-card ul { padding-left: 0; list-style: none; }
+    .timeline-card ul li { padding: 3px 0; display: flex; align-items: flex-start; gap: 8px; }
+    .timeline-card ul li::before { content: '→'; color: var(--peach); flex-shrink: 0; }
+
+    /* ─── CERTIFICATIONS ─── */
+    #certifications { background: var(--ivory-dark); }
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .cert-card {
+      background: var(--ivory);
+      border-radius: 16px;
+      padding: 20px 22px;
+      border: 1px solid var(--peach-light);
+      display: flex; align-items: flex-start; gap: 14px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cert-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+    .cert-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--peach-light);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; color: var(--rose);
+    }
+    .cert-title { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); margin-bottom: 3px; }
+    .cert-org { font-size: 0.75rem; color: var(--text-light); }
+    .cert-date { font-size: 0.7rem; color: var(--peach); font-weight: 600; margin-top: 3px; }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--ivory); }
+    .contact-wrap {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--ivory-dark);
+      border-radius: 32px;
+      padding: 56px;
+      border: 1px solid var(--peach-light);
+      box-shadow: var(--shadow);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; color: var(--text-mid); text-transform: uppercase; margin-bottom: 6px; }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      background: var(--ivory);
+      border: 1.5px solid var(--peach-light);
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--peach); }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    .form-note { font-size: 0.78rem; color: var(--text-light); margin-top: 6px; }
+    .contact-info { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2.5rem; }
+    .contact-item { display: flex; align-items: center; gap: 12px; font-size: 0.875rem; color: var(--text-mid); }
+    .contact-item i { color: var(--rose); width: 16px; }
+    .contact-item a { color: var(--text-mid); text-decoration: none; }
+    .contact-item a:hover { color: var(--rose); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--text-dark);
+      color: var(--peach-light);
+      text-align: center;
+      padding: 2.5rem 5%;
+    }
+    footer .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--peach);
+      margin-bottom: 0.5rem;
+    }
+    footer p { font-size: 0.8rem; opacity: 0.5; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-photo-wrap { justify-content: center; order: -1; }
+      .hero-photo-bg { width: 260px; height: 300px; }
+      .hero-btns { justify-content: center; }
+      .hero-socials { justify-content: center; }
+      .hero-desc { margin: 0 auto 2.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-stats { flex-direction: row; flex-wrap: wrap; }
+      .stat-card { flex: 1; min-width: 140px; }
+      .project-card.featured { grid-column: span 1; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-wrap { padding: 36px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ─── FADE IN ANIMATION ─── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─── MOBILE MENU ─── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: var(--ivory);
+      border-bottom: 1px solid var(--peach-light);
+      padding: 1.5rem 5%;
+      z-index: 99;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 0.95rem; color: var(--text-mid); text-decoration: none; font-weight: 500; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Samadhini Perera</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#skills" onclick="toggleMenu()">Skills</a>
+  <a href="#projects" onclick="toggleMenu()">Projects</a>
+  <a href="#experience" onclick="toggleMenu()">Experience</a>
+  <a href="#certifications" onclick="toggleMenu()">Certifications</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-tag">Computer Engineering Undergraduate</div>
+      <h1 class="hero-name">Samadhini<br><em>Perera</em></h1>
+      <p class="hero-title">Full-Stack Developer · AI/ML Enthusiast · Aesthete of Art & Paintings</p>
+      <p class="hero-desc">Third-year Computer Engineering undergraduate at the University of Peradeniya, passionate about building scalable full-stack systems and applying computational methods to real-world problems.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary"><i class="fas fa-sparkles"></i> View My Work</a>
+        <a href="resume.pdf" class="btn-outline" download><i class="fas fa-download"></i> Download CV</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://linkedin.com/in/samadhini-perera-263a842b8" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/samadhini-perera" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+        <a href="mailto:e21289@eng.pdn.ac.lk" class="social-icon"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-bg">
+        <!-- Replace src with your photo file path -->
+        <img src="profile.jpeg" alt="Samadhini Perera" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="hero-photo-placeholder" style="display:none;">
+          <i class="fas fa-user"></i>
+          <p>Add profile.jpg<br>to this folder</p>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <div class="dot"></div>
+        <div>
+          <strong style="display:block; font-size:0.85rem;">Open to Internships</strong>
+          <span style="font-size:0.75rem;">Sri Lanka · Remote</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid fade-in">
+    <div class="about-text">
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">Where Art Meets <em>Engineering</em></h2>
+      <p>Combining my love for art and engineering fuels my curiosity and drives me to explore innovative solutions. I'm a third-year Computer Engineering undergraduate at the University of Peradeniya, passionate about building full-stack systems that are both functional and beautifully designed.</p>
+      <p>I'm seeking an internship to gain real-world industry exposure and broaden my technical skills across software engineering, AI/ML, and cloud development — motivated by learning rather than compensation.</p>
+      <div class="about-info">
+        <div class="info-item">
+          <div class="info-label">University</div>
+          <div class="info-value">University of Peradeniya</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Degree</div>
+          <div class="info-value">BSc Eng. (Hons) — Computer Engineering</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Location</div>
+          <div class="info-value">Kurunegala, Sri Lanka</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Email</div>
+          <div class="info-value">e21289@eng.pdn.ac.lk</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">17+</div>
+        <div class="stat-desc">Certifications completed across ML, web dev, project management & more</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3+</div>
+        <div class="stat-desc">Full-stack projects built with React, Node.js, Supabase & deployed live</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">1K+</div>
+        <div class="stat-desc">LinkedIn followers & growing professional network</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header fade-in">
+    <div class="section-label">Technical Skills</div>
+    <h2 class="section-title">What I <em>Work With</em></h2>
+    <p class="section-sub">A versatile toolkit spanning frontend, backend, AI/ML and engineering tools.</p>
+  </div>
+  <div class="skills-grid fade-in">
+    <div class="skill-card">
+      <div class="skill-card-icon">💻</div>
+      <h3>Languages</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span><span class="skill-tag">Java</span><span class="skill-tag">C</span><span class="skill-tag">JavaScript</span><span class="skill-tag">SQL</span><span class="skill-tag">HTML/CSS</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🎨</div>
+      <h3>Frontend</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">React 18</span><span class="skill-tag">Tailwind CSS</span><span class="skill-tag">React Router</span><span class="skill-tag">Supabase Client</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">⚙️</div>
+      <h3>Backend</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Node.js</span><span class="skill-tag">Express.js</span><span class="skill-tag">REST APIs</span><span class="skill-tag">Swagger</span><span class="skill-tag">Google OAuth</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🗄️</div>
+      <h3>Databases</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">PostgreSQL</span><span class="skill-tag">Supabase</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🤖</div>
+      <h3>AI / ML</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Machine Learning</span><span class="skill-tag">LLMs</span><span class="skill-tag">Prompt Engineering</span><span class="skill-tag">Agent-Based Modelling</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🚀</div>
+      <h3>DevOps & Tools</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Docker</span><span class="skill-tag">Git</span><span class="skill-tag">GitHub</span><span class="skill-tag">Vercel</span><span class="skill-tag">Render</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header fade-in">
+    <div class="section-label">Projects</div>
+    <h2 class="section-title">Things I've <em>Built</em></h2>
+    <p class="section-sub">From event platforms to flood simulations — real-world systems with real impact.</p>
+  </div>
+  <div class="projects-grid fade-in">
+    <div class="project-card featured">
+      <div class="project-top">
+        <div class="project-emoji">📅</div>
+      </div>
+      <div class="project-body">
+        <div class="project-stack">
+          <span class="stack-tag">React 18</span>
+          <span class="stack-tag">Node.js</span>
+          <span class="stack-tag">Express</span>
+          <span class="stack-tag">Supabase</span>
+          <span class="stack-tag">PostgreSQL</span>
+          <span class="stack-tag">Tailwind CSS</span>
+          <span class="stack-tag">Vercel</span>
+          <span class="stack-tag">Google OAuth</span>
+        </div>
+        <h3>Event Management Dashboard</h3>
+        <p>A production-ready full-stack platform with separated frontend and backend repositories following microservices principles for independent deployment and version control.</p>
+        <ul class="project-features">
+          <li>15+ reusable React components with real-time Supabase subscriptions & mobile-first design</li>
+          <li>20+ RESTful API endpoints with Swagger docs, role-based middleware & secure CORS</li>
+          <li>Smart event browsing, live attendance tracking, rating system, organiser analytics & expense tracking</li>
+          <li>Dual authentication: Email + Google OAuth</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://peraverse.vercel.app" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+          <a href="https://github.com/samadhini-perera" target="_blank" class="proj-link"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top">
+        <div class="project-emoji">🌊</div>
+      </div>
+      <div class="project-body">
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">Mesa 2.x</span>
+          <span class="stack-tag">SciPy</span>
+          <span class="stack-tag">Plotly Dash</span>
+          <span class="stack-tag">ArcGIS Pro</span>
+        </div>
+        <h3>ABM Flood Simulation</h3>
+        <p>Agent-based flood simulation for the Kelani River Basin using GIS data and hydrodynamic modelling. Extended Mesa with a custom 3D MeshSpace — a capability absent from all existing open-source ABM platforms.</p>
+        <ul class="project-features">
+          <li>Processed 129 GIS coordinates across 248 triangular terrain faces</li>
+          <li>O(N) linear time complexity — 100 agents in 0.06s vs 2–10 min for HEC-RAS</li>
+          <li>IEEE conference paper prepared</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top">
+        <div class="project-emoji">✅</div>
+      </div>
+      <div class="project-body">
+        <div class="project-stack">
+          <span class="stack-tag">Node.js</span>
+          <span class="stack-tag">Express</span>
+          <span class="stack-tag">React</span>
+          <span class="stack-tag">GitHub</span>
+        </div>
+        <h3>Task Manager App</h3>
+        <p>Full-stack task management application with CRUD operations and RESTful API design, demonstrating clean architecture and version-controlled collaborative development.</p>
+        <div class="project-links">
+          <a href="https://github.com/samadhini-perera" target="_blank" class="proj-link"><i class="fab fa-github"></i> View on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header fade-in">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title">My <em>Journey</em></h2>
+    <p class="section-sub">Hands-on roles that shaped my technical and leadership skills.</p>
+  </div>
+  <div class="timeline fade-in">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-period">Sep 2025 – Present · 9 months</div>
+        <h3>Club Member — Toastmasters International</h3>
+        <h4>Peradeniya University Toastmasters Club · Kandy, Sri Lanka</h4>
+        <ul>
+          <li>Won the Table Topics Contest and represented the club at Area-level Toastmasters Contest</li>
+          <li>Developing public speaking, communication & leadership through prepared speeches and peer evaluation</li>
+          <li>Builds confidence articulating complex technical ideas clearly for client-facing presentations</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-period">Nov 2024 – Present · 1 yr 7 mos</div>
+        <h3>Casual Instructor — Dept. of Computer Engineering</h3>
+        <h4>University of Peradeniya · On-site</h4>
+        <ul>
+          <li>Instructed four undergraduate modules: 2nd Year Project, Computer Communication Networks, Network Analysis & Programming Methodology</li>
+          <li>Graded lab assignments, quizzes & project evaluations; conducted mentoring sessions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-period">Aug 2024 – Mar 2025 · 8 months</div>
+        <h3>Volunteer Instructor</h3>
+        <h4>University of Peradeniya, Faculty of Engineering · Education</h4>
+        <ul>
+          <li>Participated in the 'Arunella' programme — an outreach initiative supporting rural school students preparing for Ordinary Level examinations</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-period">Jun 2023 – Present · 3 years</div>
+        <h3>Computer Engineering Undergraduate</h3>
+        <h4>University of Peradeniya · Full-time</h4>
+        <ul>
+          <li>Key modules: Data Structures & Algorithms, Software Engineering, Computer Networks, Database Systems, Operating Systems, Embedded Systems, Machine Learning</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-header fade-in">
+    <div class="section-label">Certifications</div>
+    <h2 class="section-title">Always <em>Learning</em></h2>
+    <p class="section-sub">17 certifications completed across AI, web development, and project management.</p>
+  </div>
+  <div class="cert-grid fade-in">
+    <div class="cert-card"><div class="cert-icon">🤖</div><div><div class="cert-title">Machine Learning for Beginners</div><div class="cert-org">Sololearn</div><div class="cert-date">Jan 2026</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🧠</div><div><div class="cert-title">Introduction to LLMs</div><div class="cert-org">Sololearn</div><div class="cert-date">Jan 2026</div></div></div>
+    <div class="cert-card"><div class="cert-icon">💬</div><div><div class="cert-title">Prompt Engineering</div><div class="cert-org">Sololearn</div><div class="cert-date">Jan 2026</div></div></div>
+    <div class="cert-card"><div class="cert-icon">📋</div><div><div class="cert-title">Agile Project Management in ICT</div><div class="cert-org">University of Moratuwa</div><div class="cert-date">Dec 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">⚙️</div><div><div class="cert-title">Server-Side Web Programming</div><div class="cert-org">University of Moratuwa</div><div class="cert-date">Oct 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">👔</div><div><div class="cert-title">Corporate & Grooming Etiquettes</div><div class="cert-org">Loku Business</div><div class="cert-date">Oct 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🌐</div><div><div class="cert-title">Front-End Web Development</div><div class="cert-org">University of Moratuwa</div><div class="cert-date">Apr 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">📊</div><div><div class="cert-title">Foundations of Project Management</div><div class="cert-org">University of Moratuwa</div><div class="cert-date">Apr 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">☕</div><div><div class="cert-title">Java Intermediate</div><div class="cert-org">Sololearn</div><div class="cert-date">Apr 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">☕</div><div><div class="cert-title">Introduction to Java</div><div class="cert-org">Sololearn</div><div class="cert-date">Apr 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🎤</div><div><div class="cert-title">Communication Masterclass</div><div class="cert-org">Loku Business</div><div class="cert-date">Apr 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">💡</div><div><div class="cert-title">C Intermediate</div><div class="cert-org">Sololearn</div><div class="cert-date">Dec 2024</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🏆</div><div><div class="cert-title">HackerRank — Python, Java, SQL, C, DSA</div><div class="cert-org">HackerRank</div><div class="cert-date">May 2024</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🐍</div><div><div class="cert-title">Python for Beginners</div><div class="cert-org">University of Moratuwa</div><div class="cert-date">May 2024</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🎨</div><div><div class="cert-title">Web Design for Beginners</div><div class="cert-org">University of Moratuwa</div><div class="cert-date">Jun 2024</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🐍</div><div><div class="cert-title">Create Your First Python Program</div><div class="cert-org">Coursera / UST</div><div class="cert-date">Mar 2024</div></div></div>
+    <div class="cert-card"><div class="cert-icon">💡</div><div><div class="cert-title">Introduction to C</div><div class="cert-org">Sololearn</div><div class="cert-date"></div></div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header fade-in">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Let's <em>Connect</em></h2>
+    <p class="section-sub">Open to internship opportunities, collaborations, and interesting conversations.</p>
+  </div>
+  <div class="contact-wrap fade-in">
+    <div class="contact-info">
+      <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:e21289@eng.pdn.ac.lk">e21289@eng.pdn.ac.lk</a></div>
+      <div class="contact-item"><i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/samadhini-perera-263a842b8" target="_blank">linkedin.com/in/samadhini-perera-263a842b8</a></div>
+      <div class="contact-item"><i class="fab fa-github"></i><a href="https://github.com/samadhini-perera" target="_blank">github.com/samadhini-perera</a></div>
+      <div class="contact-item"><i class="fas fa-map-marker-alt"></i>Kurunegala District, North Western Province, Sri Lanka</div>
+    </div>
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Jane Smith" required />
+        </div>
+        <div class="form-group">
+          <label>Your Email</label>
+          <input type="email" placeholder="jane@example.com" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Subject</label>
+        <input type="text" placeholder="Internship Opportunity / Collaboration" />
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Hi Samadhini, I'd love to connect about..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%; justify-content:center; font-size:0.9rem; padding:14px;">
+        <i class="fas fa-paper-plane"></i> Send Message
+      </button>
+      <p class="form-note" style="text-align:center; margin-top:12px;">Note: Connect this form to Formspree or EmailJS to make it functional.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Samadhini Perera</div>
+  <p>© 2025 · Computer Engineering Undergraduate · University of Peradeniya · Sri Lanka</p>
+  <p style="margin-top:4px;">Built with ♡ and code</p>
+</footer>
+
+<script>
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // Form
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert('Thanks for reaching out! Please connect this form to Formspree or EmailJS to make it send emails.');
+  }
+</script>
+</body>
+</html>
